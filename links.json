@@ -1,0 +1,24 @@
+data = [
+    {
+        'name': 'First',
+        'links': [
+            {
+                'name': 'display name',
+                'url': 'https://localhost:80',
+            },
+            {
+                'name': 'something simple',
+                'url': 'https://localhost:80',
+        }
+        ]
+    },
+    {
+        'name': 'Another',
+        'links': [
+            {
+                'name': 'looking for ducks',
+                'url': 'https://duckduckgo.com/',
+        }
+        ]
+    }
+]

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>NewTab</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<script src="links.json"></script>
+<div id="cont"></div>
+
+<script>
+data.forEach(i => {
+    let d = document.createElement('div');
+    d.className = "container";
+    
+    let h2 = document.createElement('h2');
+    h2.innerHTML = i.name;
+    
+    let ul = document.createElement('ul');
+    i.links.forEach(j => {
+        let li = document.createElement('li');
+        let a = document.createElement('a');
+        a.innerHTML = j.name;
+        a.href = j.url;
+        li.appendChild(a);
+        ul.appendChild(li);
+    });
+    d.appendChild(h2);
+    d.appendChild(document.createElement('br'));
+    d.appendChild(ul);
+    
+    
+    document.getElementById('cont').appendChild(d);
+});
+</script>
+</body>
+</html>

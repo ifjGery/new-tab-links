@@ -1,0 +1,11 @@
+- First:
+  - name: display name
+    url:  https://localhost:80
+  - name: something simple
+    url:  https://localhost:80
+
+- Another:
+  - name: looking for ducks
+    url:  https://duckduckgo.com/
+
+
