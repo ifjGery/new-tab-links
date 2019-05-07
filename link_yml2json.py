@@ -7,19 +7,17 @@ def main():
 
     groups = yaml.safe_load(stream)
 
-    data = []
-    for links in groups:
-        group = {
-            "name": links.keys()[0],
-            "links" : []
-        }
-        for link in links[links.keys()[0]]:
-            item = {
-                "name": link["name"],
-                "url": link["url"]
-            }
-            group["links"].append(item)
-        data.append(group)
+    data = [ 
+        { 
+            "name": links.keys()[0], 
+            "links" : [ 
+                {
+                    "name": link["name"], 
+                    "url": link["url"] 
+                } for link in links[links.keys()[0]] 
+            ] 
+        } for links in groups 
+    ]
         
     f = open('links.json', 'w')
     f.write("data = " + json.dumps(data))
