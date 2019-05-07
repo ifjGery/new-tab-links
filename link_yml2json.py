@@ -8,8 +8,8 @@ def main():
 
         data = [ make_item(links) for links in groups ]
         
-        with open('links.json', 'w') as file:
-            file.write("data = " + json.dumps(data))
+        with open('links.json', 'w') as out:
+            out.write("data = " + json.dumps(data))
             
 def make_item(links):
     name = links.keys()[0]
