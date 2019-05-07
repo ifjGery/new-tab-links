@@ -1,21 +1,25 @@
 #!/usr/bin/python
 import yaml
+import json
 
 stream = open('links.yml', 'r')
 
-lnk = yaml.safe_load(stream)
+groups = yaml.safe_load(stream)
 
 f = open('links.json', 'w')
-f.write("data = [" + "\n")
-for i in lnk:
-    f.write("    {" + "\n")
-    f.write("        'name': '" + i.keys()[0] + "'," + "\n")
-    f.write("        'links': [" + "\n")
-    for j in i[i.keys()[0]]:
-        f.write("            {" + "\n")
-        f.write("                'name': '" + j["name"] + "'," + "\n")
-        f.write("                'url': '" + j["url"] + "'," + "\n")
-        f.write(("            }," if j != i[i.keys()[0]][-1] else "        }") + "\n")
-    f.write("        ]" + "\n")
-    f.write(("    }," if i != lnk[-1] else "    }") + "\n")
-f.write("]" + "\n")
+
+data = []
+for links in groups:
+    group = {
+        "name": links.keys()[0],
+        "links" : []
+    }
+    for link in links[links.keys()[0]]:
+        item = {
+            "name": link["name"],
+            "url": link["url"]
+        }
+        group["links"].append(item)
+    data.append(group)
+f.write("data = " + json.dumps(data))
+f.close()
